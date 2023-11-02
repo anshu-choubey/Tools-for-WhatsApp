@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Whatsapp Tools</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_home">Open Whatsapp</string>
+    <string name="title_dashboard">Image Statuses</string>
+    <string name="title_notifications">Video Statuses</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="tab_text_1">IMAGES</string>
+    <string name="tab_text_2">VIDEOS</string>
+    <string name="tab_text_3">GALLERY</string>
+    <string name="initialize">Initializing...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="whats_app">WhatsApp</string>
+    <string name="gb_whats_app">GB WhatsApp</string>
+    <string name="whats_app_business">WhatsApp Business</string>
+    <string name="open">Open Drawer</string>
+    <string name="close">Close Drawer</string>
+    <string name="share_app">Share App</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="about_whatssave">About WhatsSave</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="exit_app">Exit App</string>
+    <string name="share_app_text">"Hi there! have you heard about WhatsSave, it's a WhatsApp status saver. Why beg your friends to share you their status when you can check and save their status into your phone memory using WhatsSave. Visit the link below to download. \n https://www.whatssave.com.ng"</string>
+    <string name="prev">PREV</string>
+    <string name="next">NEXT</string>
+    <string name="finish">FINISH</string>
+    <string name="developer_contacts">Developer Contacts</string>
+    <string name="android_developer">Android Developer</string>
+    <string name="whatsapp_contact">WhatsApp Contact</string>
+    <string name="facebook_contact">Facebook Contact</string>
+    <string name="github_repository">Github Repository</string>
+    <string name="instagram_profile">Instagram Profile</string>
+    <string name="activity_contact_below">You can reach us through the following contacts above.</string>
+    <string name="communicate">Communicate</string>
+    <string name="email">example@gmail.com</string>
+    <string name="review">Let_me_recommend_you_this_application</string>
+    <string name="reviews">Let_me_recommend_you_this_application</string>
+    <string name="version">Version : 1.0</string>
+</resources>

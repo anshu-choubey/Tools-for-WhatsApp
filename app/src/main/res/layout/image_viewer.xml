@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F2525">
+
+    <!-- <com.ozaydin.serkan.com.image_zoom_view.ImageViewZoom
+         android:layout_centerVertical="true"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:src="@drawable/img"
+         android:id="@+id/images_viewer_img"/>-->
+
+    <ImageView
+        android:id="@+id/images_viewer_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorBackground">#f4f9ff</color>
+    <color name="c1">#2989e4</color>
+
+    <color name="colorPrimary">#8793eb</color>
+    <color name="colorLine">#ecf1f7</color>
+    <color name="colorText">#444b68</color>
+    <color name="colorTint">#6f96b5</color>
+    <color name="colorCard">#ffffff</color>
+
+    <color name="homeItemStart0">#36d1dc</color>
+    <color name="homeItemEnd0">#5b86e5</color>
+
+    <color name="homeItemStart1">#FF416C</color>
+    <color name="homeItemEnd1">#FF4B2B</color>
+
+    <color name="homeItemStart2">#FC5C7D</color>
+    <color name="homeItemEnd2">#6A82FB</color>
+
+    <color name="homeItemStart3">#cc2b5e</color>
+    <color name="homeItemEnd3">#753a88</color>
+
+    <color name="homeItemStart4">#de6262</color>
+    <color name="homeItemEnd4">#ffb88c</color>
+
+    <color name="homeItemStart5">#ff512f</color>
+    <color name="homeItemEnd5">#dd2476</color>
+
+    <color name="homeItemStart6">#0f9b0f</color>
+    <color name="homeItemEnd6">#000000</color>
+
+    <color name="homeItemStart7">#ff9966</color>
+    <color name="homeItemEnd7">#ff5e62</color>
+
+    <color name="homeItemStart8">#4568dc</color>
+    <color name="homeItemEnd8">#b06ab3</color>
+
+    <color name="homeItemStart9">#02aab0</color>
+    <color name="homeItemEnd9">#00cdac</color>
+    <color name="grey_1">#e6e6e6</color>
+    <color name="grey_2">#999999</color>
+    <color name="grey_3">#37474f</color>
+    <color name="grey_4">#263238</color>
+    <color name="grey_5">#b5bdbf</color>
+</resources>

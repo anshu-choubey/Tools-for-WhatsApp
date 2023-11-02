@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="count">
+        <item>10 Character</item>
+        <item>50 Character</item>
+        <item>100 Character</item>
+        <item>200 Character</item>
+        <item>500 Character</item>
+        <item>1000 Character</item>
+        <item>2000 Character</item>
+        <item>5000 Character</item>
+        <item>10000 Character</item>
+    </array>
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true"
+    android:background="@color/colorBackground"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="2dp"
+        app:cardCornerRadius="2dp"
+        android:layout_gravity="center"
+        app:cardElevation="1dp"
+        app:cardBackgroundColor="@color/colorCard"
+        app:cardPreventCornerOverlap="false">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/symbols"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:adjustViewBounds="true"
+            android:background="?attr/actionBarItemBackground"
+            android:contentDescription="@string/app_name"
+            android:gravity="center"
+            android:padding="6dp"
+            android:src="@drawable/ic_baseline_text_fields_24"
+            app:tint="@color/colorTint" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorLine" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_font"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Enter Your Text"
+            android:background="@color/colorCard"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            app:cardBackgroundColor="@color/colorCard"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="1dp"
+            app:cardPreventCornerOverlap="false">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_stylish_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="No styles added to favourites"
+            android:visibility="gone" />
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</LinearLayout>

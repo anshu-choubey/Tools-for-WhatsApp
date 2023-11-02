@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_fav"
+            android:icon="@drawable/favourite_icon"
+            android:title="Favourite" />
+        <item
+            android:id="@+id/nav_float"
+            android:icon="@drawable/ic_baseline_restore_24"
+            android:title="Status" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/setting_icon"
+            android:title="Settings" />
+
+    </group>
+
+    <item android:title="@string/communicate">
+        <menu>
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_share"
+                    android:title="Share" />
+                <item
+                    android:id="@+id/nav_send"
+                    android:icon="@drawable/ic_baseline_send_24"
+                    android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

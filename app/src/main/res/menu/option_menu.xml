@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group>
+
+        <item
+            android:id="@+id/downloads"
+            android:title="Downloads"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/image"
+            />
+
+        <item android:id="@+id/share"
+            android:icon="@drawable/ic_share_black_24dp"
+            app:showAsAction="ifRoom"
+            android:title="Share This App">
+        </item>
+
+    </group>
+
+</menu>

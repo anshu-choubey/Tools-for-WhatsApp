@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rawderm.whatsapptools">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/igg"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/igg"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.whatsapptools.apps.activities.ShowActivity"
+            android:parentActivityName="com.whatsapptools.apps.activities.HomeActivity">
+        </activity>
+
+        <activity android:name="com.whatsapptools.apps.activities.WebWhatsAppActivity"/>
+
+
+        <activity android:name="com.whatsapptools.apps.activities.HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.whatsapptools.apps.activities.VideoViewer" />
+        <activity android:name="com.whatsapptools.apps.activities.StylishActivity"
+            android:parentActivityName="com.whatsapptools.apps.activities.HomeActivity">
+
+        </activity>
+        <activity android:name="com.whatsapptools.apps.activities.ImageViewer" />
+
+        <activity android:name="com.whatsapptools.apps.activities.TabActivity"
+            android:parentActivityName="com.whatsapptools.apps.activities.HomeActivity">
+        </activity>
+        <activity android:name="com.whatsapptools.apps.activities.MainActivity"></activity>
+        <activity
+            android:name="com.whatsapptools.apps.activities.ImageActivity"
+            android:parentActivityName="com.whatsapptools.apps.activities.MainActivity" />
+        <activity
+            android:name="com.whatsapptools.apps.activities.VideoActivity"
+            android:parentActivityName="com.whatsapptools.apps.activities.MainActivity" />
+    </application>
+
+</manifest>

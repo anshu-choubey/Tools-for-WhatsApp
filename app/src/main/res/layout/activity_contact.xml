@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="40dp">
+
+        <TextView
+            android:id="@+id/contact_text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/contact_android_dev_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/developer_contacts"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/contact_android_dev_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/contact_card_view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="@string/android_developer"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/contact_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:cardCornerRadius="20sp"
+            app:cardElevation="10dp"
+            app:contentPadding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/contact_whats_aap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/whatsapp_draw"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/whatsapp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="5dp"
+                    android:text="@string/whatsapp_contact"
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:id="@+id/contact_fb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fb_draw"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/facebook"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="5dp"
+                    android:text="@string/facebook_contact"
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:id="@+id/contact_git"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/github_draw"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/github"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="5dp"
+                    android:text="@string/github_repository"
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:id="@+id/contact_insta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/instagram_draw"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/instagram"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="5dp"
+                    android:text="@string/instagram_profile"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/activity_contact_below"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</ScrollView>

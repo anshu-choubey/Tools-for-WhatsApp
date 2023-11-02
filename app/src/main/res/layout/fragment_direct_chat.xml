@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="2dp"
+            app:cardBackgroundColor="@color/colorCard"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="1dp"
+            app:cardPreventCornerOverlap="false">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="start">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/msg"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Enter Your Text"
+                                android:background="@color/colorCard"
+                                android:imeOptions="actionDone"
+                                android:inputType="textMultiLine"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="2dp"
+                            app:cardCornerRadius="2dp"
+                            android:layout_gravity="center"
+                            app:cardElevation="1dp"
+                            app:cardBackgroundColor="@color/colorCard"
+                            app:cardPreventCornerOverlap="false">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.hbb20.CountryCodePicker
+                                android:id="@+id/ccp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center" />
+
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorLine" />
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/input_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="55dp"
+                                    android:hint="Phone Number"
+                                    android:background="@color/colorCard"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="phone"
+                                    android:textSize="15sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="2dp"
+            app:cardBackgroundColor="@color/colorCard"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="1dp"
+            app:cardPreventCornerOverlap="false">
+
+            <RadioGroup
+                android:id="@+id/whatsRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/whatsappRadio"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WhatsApp" />
+
+                <RadioButton
+                    android:id="@+id/bwhatsappRadio"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business WhatsApp" />
+            </RadioGroup>
+    </androidx.cardview.widget.CardView>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/go"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:layout_gravity="center|start"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_2"
+            android:text="SEND NOW" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

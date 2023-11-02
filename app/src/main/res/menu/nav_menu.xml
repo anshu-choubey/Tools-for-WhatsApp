@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/share_app_menu"
+        android:icon="@drawable/ic_share_pink_24dp"
+        android:title="@string/share_app" />
+    <item
+        android:id="@+id/about_whatsave_menu"
+        android:icon="@drawable/ic_format_color_text_pink_24dp"
+        android:title="@string/about_whatssave" />
+    <item
+        android:id="@+id/contact_us_menu"
+        android:icon="@drawable/ic_contact_phone_pink_24dp"
+        android:title="@string/contact_us" />
+    <item
+        android:id="@+id/exit_app_menu"
+        android:icon="@drawable/ic_exit_to_app_pink_24dp"
+        android:title="@string/exit_app" />
+</menu>

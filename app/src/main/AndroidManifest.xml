@@ -39,7 +39,7 @@
         <activity android:name="com.whatsapptools.apps.activities.TabActivity"
             android:parentActivityName="com.whatsapptools.apps.activities.HomeActivity">
         </activity>
-        <activity android:name="com.whatsapptools.apps.activities.MainActivity"></activity>
+        <activity android:name="com.whatsapptools.apps.activities.MainActivity" />
         <activity
             android:name="com.whatsapptools.apps.activities.ImageActivity"
             android:parentActivityName="com.whatsapptools.apps.activities.MainActivity" />

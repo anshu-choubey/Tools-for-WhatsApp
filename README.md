@@ -6,7 +6,7 @@ WhatsApp Tools helps you to save any Image/Video Whatsapp Status in your Gallery
 You can also open chat with any number in Whatsapp, without saving that number in your contact list.
 
 
-
+<p><a href="https://github.com/anshu-choubey/Tools-for-WhatsApp/raw/master/app-debug.apk">CLICK HERE</a> TO DOWNLOAD APK</p>
 
 
 

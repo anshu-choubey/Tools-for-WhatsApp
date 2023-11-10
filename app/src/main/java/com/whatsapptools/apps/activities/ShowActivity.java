@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.rawderm.whatsapptools.R;
-import com.whatsapptools.apps.utils.TextRepeatFragment;
+import com.whatsapptools.apps.R;
+import com.whatsapptools.apps.fragments.TextRepeatFragment;
 import com.whatsapptools.apps.fragments.BlackMsgFragment;
 import com.whatsapptools.apps.fragments.DirectChatFragment;
 import com.whatsapptools.apps.fragments.EmojiFragment;

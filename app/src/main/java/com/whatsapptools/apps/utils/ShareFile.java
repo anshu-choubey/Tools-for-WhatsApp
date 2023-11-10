@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 
 import java.io.File;
 

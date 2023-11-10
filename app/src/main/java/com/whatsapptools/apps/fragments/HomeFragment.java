@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 import com.whatsapptools.apps.activities.ShowActivity;
 import com.whatsapptools.apps.activities.StylishActivity;
 import com.whatsapptools.apps.activities.TabActivity;

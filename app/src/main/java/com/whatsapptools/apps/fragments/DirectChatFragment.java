@@ -19,7 +19,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.hbb20.CountryCodePicker;
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 import com.whatsapptools.apps.utils.Helper;
 
 import java.net.IDN;

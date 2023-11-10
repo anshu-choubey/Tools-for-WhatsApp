@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 import com.whatsapptools.apps.adapter.ImageAdapter;
 import com.whatsapptools.apps.utils.Config;
 import com.whatsapptools.apps.utils.PrefState;

@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 import com.whatsapptools.apps.adapter.PicturePager;
 import com.whatsapptools.apps.utils.Config;
 import com.whatsapptools.apps.utils.FileConfig;

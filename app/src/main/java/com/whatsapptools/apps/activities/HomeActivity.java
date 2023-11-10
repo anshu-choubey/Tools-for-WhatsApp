@@ -15,13 +15,14 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.rawderm.whatsapptools.R;
 import com.whatsapptools.apps.fragments.HomeFragment;
 import com.whatsapptools.apps.adapter.ViewPagerAdapter;
 import com.whatsapptools.apps.fragments.GalleryFragment;
 import com.whatsapptools.apps.fragments.SettingFragment;
 
 import java.util.Objects;
+
+import com.whatsapptools.apps.R;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     TabLayout tabLayout;

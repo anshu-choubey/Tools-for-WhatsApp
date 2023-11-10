@@ -41,7 +41,7 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.single.PermissionListener;
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 
 import java.util.Arrays;
 import java.util.Locale;

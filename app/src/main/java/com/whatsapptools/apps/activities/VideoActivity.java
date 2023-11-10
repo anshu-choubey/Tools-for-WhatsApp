@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 
 public class VideoActivity extends AppCompatActivity {
 

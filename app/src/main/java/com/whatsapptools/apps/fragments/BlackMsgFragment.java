@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 
 
 public class BlackMsgFragment extends Fragment implements AdapterView.OnItemSelectedListener {

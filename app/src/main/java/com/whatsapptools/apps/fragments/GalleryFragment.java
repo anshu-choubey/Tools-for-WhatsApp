@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 import com.whatsapptools.apps.adapter.GalleryAdapter;
 import com.whatsapptools.apps.utils.Config;
 

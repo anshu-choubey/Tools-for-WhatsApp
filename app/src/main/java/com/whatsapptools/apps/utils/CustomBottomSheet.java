@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 
 public class CustomBottomSheet extends BottomSheetDialogFragment implements OnClickListener {
     private String styledText;

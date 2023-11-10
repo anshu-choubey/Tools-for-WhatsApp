@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.hbb20.CountryCodePicker;
 
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 
 public class ItemOneFragment extends Fragment {
     private EditText editno, editmsg;

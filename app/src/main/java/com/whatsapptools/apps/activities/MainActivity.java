@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 import com.skyfishjy.library.RippleBackground;
 
 import java.util.ArrayList;

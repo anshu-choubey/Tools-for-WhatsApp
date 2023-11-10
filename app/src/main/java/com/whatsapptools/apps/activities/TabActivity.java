@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 import com.whatsapptools.apps.activities.HomeActivity;
 import com.whatsapptools.apps.adapter.TabAdapter;
 import com.whatsapptools.apps.fragments.GalleryFragment;

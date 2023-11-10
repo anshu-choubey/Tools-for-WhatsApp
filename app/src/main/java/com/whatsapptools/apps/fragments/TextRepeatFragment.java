@@ -1,4 +1,4 @@
-package com.whatsapptools.apps.utils;
+package com.whatsapptools.apps.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -21,7 +21,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textview.MaterialTextView;
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 
 import java.util.Objects;
 

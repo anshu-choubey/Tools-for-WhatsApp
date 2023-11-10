@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 import com.whatsapptools.apps.adapter.FontAdapter;
 import com.whatsapptools.apps.models.Font;
 import com.whatsapptools.apps.utils.Constants;

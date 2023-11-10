@@ -19,7 +19,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.rawderm.whatsapptools.R;
+import com.whatsapptools.apps.R;
 
 
 public class SettingFragment extends Fragment implements View.OnClickListener {

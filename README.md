@@ -20,3 +20,9 @@ You can also open chat with any number in Whatsapp, without saving that number i
 <img style="margin-left:10px;" src="https://i.imgur.com/6zrrg2r.png" width="19%" >
 
 </div>
+
+Contributions:
+Contributions are welcome! If you have any feature requests, bug reports, or improvements, feel free to open an issue or submit a pull request.
+
+License:
+This project is licensed under the MIT License.

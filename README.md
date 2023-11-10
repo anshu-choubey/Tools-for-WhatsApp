@@ -11,6 +11,8 @@ You can also open chat with any number in Whatsapp, without saving that number i
 
 
 ## Screenshots
+
+<div>
 <img  src="https://i.imgur.com/2dL4roN.png" width="19%" >
 <img style="margin-left:10px;" src="https://i.imgur.com/EULNe9f.png" width="19%" >
 <img style="margin-left:10px;" src="https://i.imgur.com/vbQzEpx.png" width="19%" >

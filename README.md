@@ -1,4 +1,4 @@
-# Tools for Whatsapp
+# Tools for WhatsApp
 
 
 
@@ -9,9 +9,9 @@ You can also open chat with any number in Whatsapp, without saving that number i
 <p><a href="https://github.com/anshu-choubey/Tools-for-WhatsApp/raw/master/app-debug.apk">CLICK HERE</a> TO DOWNLOAD APK</p>
 
 
-<div>
-## Screenshots
 
+## Screenshots
+<div>
 
 <img  src="https://i.imgur.com/2dL4roN.png" width="19%" >
 <img style="margin-left:10px;" src="https://i.imgur.com/EULNe9f.png" width="19%" >

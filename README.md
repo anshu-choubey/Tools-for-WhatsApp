@@ -22,9 +22,9 @@ Effortlessly save any WhatsApp status to your gallery permanently with our tool.
 </div>
 
 
-Contributions:
+## Contributions:
 Contributions are welcome! If you have any feature requests, bug reports, or improvements, feel free to open an issue or submit a pull request.
 
 
-License:
+## License:
 <p>This project is licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>

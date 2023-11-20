@@ -1,8 +1,7 @@
 # Tools for WhatsApp
 
 
-
-ortlessly save any WhatsApp status to your gallery permanently with our tool. Download images and videos without hassle. Additionally, open chats without saving numbers in your contact list for a streamlined messaging experience. Respect privacy and use responsibly.
+Effortlessly save any WhatsApp status to your gallery permanently with our tool. Download images and videos without hassle. Additionally, open chats without saving numbers in your contact list for a streamlined messaging experience. Respect privacy and use responsibly.
 
 
 

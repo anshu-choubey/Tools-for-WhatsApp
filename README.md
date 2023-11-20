@@ -2,8 +2,9 @@
 
 
 
-WhatsApp Tools helps you to save any Image/Video Whatsapp Status in your Gallery Permanently. You can Download any status that is Visible in WhatsApp.
-You can also open chat with any number in Whatsapp, without saving that number in your contact list.
+ortlessly save any WhatsApp status to your gallery permanently with our tool. Download images and videos without hassle. Additionally, open chats without saving numbers in your contact list for a streamlined messaging experience. Respect privacy and use responsibly.
+
+
 
 
 <p><a href="https://github.com/anshu-choubey/Tools-for-WhatsApp/raw/master/app-debug.apk">CLICK HERE</a> TO DOWNLOAD APK</p>
@@ -21,8 +22,10 @@ You can also open chat with any number in Whatsapp, without saving that number i
 
 </div>
 
+
 Contributions:
 Contributions are welcome! If you have any feature requests, bug reports, or improvements, feel free to open an issue or submit a pull request.
 
+
 License:
-This project is licensed under the MIT License.
+<p>This project is licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>

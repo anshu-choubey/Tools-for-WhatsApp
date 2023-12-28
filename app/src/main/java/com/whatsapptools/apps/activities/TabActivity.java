@@ -55,6 +55,12 @@ public class TabActivity extends AppCompatActivity {
                     finish();
                     startActivity(getIntent());
                 }
+            } else if (isExist(Config.WhatsAppNewDirectoryPath)){
+                if (!Config.WhatsAppNewDirectoryPath.equals(PrefState.getInstance(this).getWhatsAppState())) {
+                    PrefState.getInstance(this).setWhatsAppState(Config.WhatsAppNewDirectoryPath);
+                    finish();
+                    startActivity(getIntent());
+                }
             } else {
                 viewDialog("Install WhatsApp, see some status and check back.");
             }        }

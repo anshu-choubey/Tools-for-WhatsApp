@@ -1,5 +1,6 @@
 package com.whatsapptools.apps.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.documentfile.provider.DocumentFile;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -29,10 +31,10 @@ import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.viewHolder> {
 
-    List<File> list;
+    List<DocumentFile> list;
     Context context;
 
-    public ImageAdapter(Context context, List<File> list) {
+    public ImageAdapter(Context context, List<DocumentFile> list) {
         this.context = context;
         this.list = list;
     }
@@ -45,13 +47,13 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.viewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final viewHolder holder, final int position) {
-        final File file = list.get(position);
-        holder.setImg(file.getAbsolutePath());
+    public void onBindViewHolder(@NonNull final viewHolder holder, @SuppressLint("RecyclerView") final int position) {
+        final DocumentFile file = list.get(position);
+        holder.setImg(file.getUri().toString());
         holder.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                File src = new File(file.getAbsolutePath());
+                File src = new File(file.getUri().toString());
                 File dst = new File(Config.WhatsAppSaveStatus);
                 try {
                     FileConfig.getInstance(context).saveFile(src, dst);
@@ -64,7 +66,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.viewHolder> 
         holder.btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShareFile.getInstance(context).share("image/*", file.getAbsolutePath());
+                ShareFile.getInstance(context).share("image/*", file.getUri().toString());
             }
         });
 
@@ -72,8 +74,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.viewHolder> 
             @Override
             public void onClick(View view) {
                 ArrayList<String> files = new ArrayList<>();
-                for (File pic : list) {
-                    files.add(pic.getAbsolutePath());
+                for (DocumentFile pic : list) {
+                    files.add(pic.getUri().toString());
                 }
                 Intent intent = new Intent(context, ImageViewer.class);
                 intent.putStringArrayListExtra("files", files);

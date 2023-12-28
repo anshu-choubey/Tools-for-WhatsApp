@@ -2,8 +2,10 @@ package com.whatsapptools.apps.fragments;
 
 
 import android.content.Context;
+import android.content.UriPermission;
 import android.os.Bundle;
 
+import androidx.documentfile.provider.DocumentFile;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.whatsapptools.apps.R;
@@ -27,8 +28,7 @@ import com.whatsapptools.apps.utils.PrefState;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-
+import java.util.Objects;
 
 
 public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -39,10 +39,10 @@ public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRef
     ImageView imageView;
     TextView textView;
     private RecyclerView recyclerView;
-    private List<File> list;
+    private List<DocumentFile> list;
      String path, state;
      File dir;
-     File[] files;
+     DocumentFile[] files;
 
     public ImagesFragment() {
     }
@@ -62,7 +62,7 @@ public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRef
         imageView = view.findViewById(R.id.fragment_images_image_view);
         textView = view.findViewById(R.id.fragment_images_text_view);
         layout = view.findViewById(R.id.fragment_images_linear_layout);
-        list = new ArrayList<>();
+        list = new ArrayList<DocumentFile>();
         adapter = new ImageAdapter(getContext(), list);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setHasFixedSize(true);
@@ -80,14 +80,15 @@ public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private void loadImage() {
         list.clear();
         swipeRefreshLayout.setRefreshing(true);
-        dir = new File(path);
+        List<UriPermission> listn = requireActivity().getContentResolver().getPersistedUriPermissions();
+        DocumentFile dir = DocumentFile.fromTreeUri(requireActivity(), listn.get(0).getUri());
         if (dir.exists()) {
             layout.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
             files = dir.listFiles();
             if (files.length != 0) {
-                for (File file : files) {
-                    if (file.getName().endsWith(".jpg") || file.getName().endsWith(".png") || file.getName().endsWith(".gif") || file.getName().endsWith(".jpeg"))
+                for (DocumentFile file : files) {
+                    if (Objects.requireNonNull(file.getName()).endsWith(".jpg") || file.getName().endsWith(".png") || file.getName().endsWith(".gif") || file.getName().endsWith(".jpeg"))
                         list.add(file);
                 }
                 adapter.notifyDataSetChanged();
@@ -117,9 +118,10 @@ public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     private String getName() {
-        if (PrefState.getInstance(getContext()).getWhatsAppState().equals(Config.WhatsAppDirectoryPath))
+        String whatsapp = PrefState.getInstance(getContext()).getWhatsAppState();
+        if (whatsapp.equals(Config.WhatsAppDirectoryPath) || whatsapp.equals(Config.WhatsAppNewDirectoryPath))
             return "WhatsApp";
-        else if (PrefState.getInstance(getContext()).getWhatsAppState().equals(Config.GBWhatsAppDirectoryPath))
+        else if (whatsapp.equals(Config.GBWhatsAppDirectoryPath) || whatsapp.equals(Config.GBWhatsAppNewDirectoryPath))
             return "GB WhatsApp";
         else
             return "WhatsApp Business";

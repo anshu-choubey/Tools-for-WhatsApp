@@ -34,7 +34,6 @@ import java.util.Objects;
 
 
 public class TabActivity extends AppCompatActivity {
-
     private static final int REQUEST_CODE = 1;
     private static final String[] PERMISSIONS = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -64,7 +63,6 @@ public class TabActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         adapter = new TabAdapter(getSupportFragmentManager());
 
-        videosFragment = new VideosFragment();
         galleryFragment = new GalleryFragment();
 
         if (doesNotHavePermissions()) {
@@ -83,9 +81,11 @@ public class TabActivity extends AppCompatActivity {
         if (itemId == 1) {
             Objects.requireNonNull(getSupportActionBar()).setTitle("WhatsApp Status");
             if (isExist(Config.StorageBasePath + Config.WhatsAppNewDirectoryPath)) {
-                imagesFragment = new ImagesFragment(Config.StorageBasePath + Config.WhatsAppNewDirectoryPath);
+                imagesFragment = new ImagesFragment("WhatsApp", Config.StorageBasePath + Config.WhatsAppNewDirectoryPath);
+                videosFragment = new VideosFragment("WhatsApp", Config.StorageBasePath + Config.WhatsAppNewDirectoryPath);
             } else if (isExist(Config.StorageBasePath + Config.WhatsAppDirectoryPath)) {
-                imagesFragment = new ImagesFragment(Config.StorageBasePath + Config.WhatsAppDirectoryPath);
+                imagesFragment = new ImagesFragment("WhatsApp", Config.StorageBasePath + Config.WhatsAppDirectoryPath);
+                videosFragment = new VideosFragment("WhatsApp", Config.StorageBasePath + Config.WhatsAppDirectoryPath);
             } else {
                 viewDialog("WhatsApp Not Installed", "Install WhatsApp, see some status and check back.", false);
                 return;
@@ -94,9 +94,11 @@ public class TabActivity extends AppCompatActivity {
         if (itemId == 0) {
             Objects.requireNonNull(getSupportActionBar()).setTitle("GB WhatsApp Status");
             if (isExist(Config.StorageBasePath + Config.GBWhatsAppNewDirectoryPath)) {
-                imagesFragment = new ImagesFragment(Config.StorageBasePath + Config.GBWhatsAppNewDirectoryPath);
+                imagesFragment = new ImagesFragment("GB WhatsApp", Config.StorageBasePath + Config.GBWhatsAppNewDirectoryPath);
+                videosFragment = new VideosFragment("GB WhatsApp", Config.StorageBasePath + Config.GBWhatsAppNewDirectoryPath);
             } else if (isExist(Config.StorageBasePath + Config.GBWhatsAppDirectoryPath)) {
-                imagesFragment = new ImagesFragment(Config.StorageBasePath + Config.GBWhatsAppDirectoryPath);
+                imagesFragment = new ImagesFragment("GB WhatsApp", Config.StorageBasePath + Config.GBWhatsAppDirectoryPath);
+                videosFragment = new VideosFragment("GB WhatsApp", Config.StorageBasePath + Config.GBWhatsAppDirectoryPath);
             } else {
                 viewDialog("GB WhatsApp Not Installed", "Install GB WhatsApp, see some status and check back.", true);
                 return;
@@ -105,9 +107,11 @@ public class TabActivity extends AppCompatActivity {
         if (itemId == 2) {
             Objects.requireNonNull(getSupportActionBar()).setTitle("WhatsApp Business Status");
             if (isExist(Config.StorageBasePath + Config.WhatsAppBusinessNewPath)) {
-                imagesFragment = new ImagesFragment(Config.StorageBasePath + Config.WhatsAppBusinessNewPath);
+                imagesFragment = new ImagesFragment("WhatsApp Business", Config.StorageBasePath + Config.WhatsAppBusinessNewPath);
+                videosFragment = new VideosFragment("WhatsApp Business", Config.StorageBasePath + Config.WhatsAppBusinessNewPath);
             } else if (isExist(Config.StorageBasePath + Config.WhatsAppBusinessPath)) {
-                imagesFragment = new ImagesFragment(Config.StorageBasePath + Config.WhatsAppBusinessPath);
+                imagesFragment = new ImagesFragment("WhatsApp Business", Config.StorageBasePath + Config.WhatsAppBusinessPath);
+                videosFragment = new VideosFragment("WhatsApp Business", Config.StorageBasePath + Config.WhatsAppBusinessPath);
             } else {
                 viewDialog("WhatsApp Business Not Installed", "Install WhatsApp Business, see some status and check back.", true);
                 return;

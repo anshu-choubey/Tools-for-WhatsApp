@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.documentfile.provider.DocumentFile;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -26,12 +27,11 @@ import java.io.IOException;
 import java.util.List;
 
 
-
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.viewHolder> {
     Context context;
-    List<File> list;
+    List<DocumentFile> list;
 
-    public VideoAdapter(Context context, List<File> list) {
+    public VideoAdapter(Context context, List<DocumentFile> list) {
         this.context = context;
         this.list = list;
     }
@@ -45,46 +45,32 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.viewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull final viewHolder holder, int position) {
-        final String file = list.get(position).getAbsolutePath();
-        holder.setImg(file);
-        holder.btnShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShareFile.getInstance(context).share("video/*", file);
-            }
-        });
-        holder.btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                File src = new File(file);
-                File dst = new File(Config.WhatsAppSaveStatus);
-                try {
-                    FileConfig.getInstance(context).saveFile(src, dst);
-                    Toast.makeText(context, "Video Saved", Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        final DocumentFile file = list.get(position);
+        holder.setImg(file.getUri().toString());
+        holder.btnShare.setOnClickListener(view -> ShareFile.getInstance(context).share("video/*", file.getUri().toString()));
+        holder.btnSave.setOnClickListener(view -> {
+            File src = new File(file.getUri().toString());
+            File dst = new File(Config.WhatsAppSaveStatus);
+            try {
+                FileConfig.getInstance(context).saveFile(src, dst);
+                Toast.makeText(context, "Video Saved", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, VideoViewer.class);
-                intent.putExtra("video", file);
-                intent.putExtra("args", "video");
-                context.startActivity(intent);
-            }
+        holder.layout.setOnClickListener(view -> {
+            Intent intent = new Intent(context, VideoViewer.class);
+            intent.putExtra("video", file.getUri().toString());
+            intent.putExtra("args", "video");
+            context.startActivity(intent);
         });
 
-        holder.imgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, VideoViewer.class);
-                intent.putExtra("video", file);
-                intent.putExtra("args", "video");
-                context.startActivity(intent);
-            }
+        holder.imgBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(context, VideoViewer.class);
+            intent.putExtra("video", file.getUri().toString());
+            intent.putExtra("args", "video");
+            context.startActivity(intent);
         });
     }
 

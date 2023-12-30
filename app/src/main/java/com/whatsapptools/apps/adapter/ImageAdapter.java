@@ -50,39 +50,28 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.viewHolder> 
     public void onBindViewHolder(@NonNull final viewHolder holder, @SuppressLint("RecyclerView") final int position) {
         final DocumentFile file = list.get(position);
         holder.setImg(file.getUri().toString());
-        holder.btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                File src = new File(file.getUri().toString());
-                File dst = new File(Config.WhatsAppSaveStatus);
-                try {
-                    FileConfig.getInstance(context).saveFile(src, dst);
-                } catch (IOException e) {
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+        holder.btnSave.setOnClickListener(view -> {
+            File src = new File(file.getUri().toString());
+            File dst = new File(Config.WhatsAppSaveStatus);
+            try {
+                FileConfig.getInstance(context).saveFile(src, dst);
+            } catch (IOException e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        holder.btnShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShareFile.getInstance(context).share("image/*", file.getUri().toString());
-            }
-        });
+        holder.btnShare.setOnClickListener(view -> ShareFile.getInstance(context).share("image/*", file.getUri().toString()));
 
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ArrayList<String> files = new ArrayList<>();
-                for (DocumentFile pic : list) {
-                    files.add(pic.getUri().toString());
-                }
-                Intent intent = new Intent(context, ImageViewer.class);
-                intent.putStringArrayListExtra("files", files);
-                intent.putExtra("position", position);
-                intent.putExtra("args", "image");
-                context.startActivity(intent);
+        holder.layout.setOnClickListener(view -> {
+            ArrayList<String> files = new ArrayList<>();
+            for (DocumentFile pic : list) {
+                files.add(pic.getUri().toString());
             }
+            Intent intent = new Intent(context, ImageViewer.class);
+            intent.putStringArrayListExtra("files", files);
+            intent.putExtra("position", position);
+            intent.putExtra("args", "image");
+            context.startActivity(intent);
         });
     }
 

@@ -5,13 +5,6 @@ import android.content.Context;
 import android.content.UriPermission;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.documentfile.provider.DocumentFile;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +13,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.documentfile.provider.DocumentFile;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.bumptech.glide.Glide;
 import com.whatsapptools.apps.R;
 import com.whatsapptools.apps.adapter.ImageAdapter;
-import com.whatsapptools.apps.utils.Config;
-import com.whatsapptools.apps.utils.PrefState;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -41,10 +38,11 @@ public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRef
     TextView textView;
     private RecyclerView recyclerView;
     private List<DocumentFile> list;
-    String path;
+    String path, name;
     DocumentFile[] files;
 
-    public ImagesFragment(String path) {
+    public ImagesFragment(String name, String path) {
+        this.name = name;
         this.path = path;
     }
 
@@ -106,13 +104,12 @@ public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 layout.setVisibility(View.VISIBLE);
                 recyclerView.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
-                displayError(getContext(), R.drawable.new_404_2, "OOPS!\nNo pictures available, check some status on " + getName() + " and come back.");
+                displayError(getContext(), R.drawable.new_404_2, "OOPS!\nNo pictures available, check some status on " + name + " and come back.");
             }
         } else {
             layout.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
             swipeRefreshLayout.setRefreshing(false);
-            displayError(getContext(), R.drawable.new_404, "OOPS!\n" + getName() + " Not Installed.");
         }
     }
 
@@ -124,15 +121,5 @@ public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRef
     @Override
     public void onRefresh() {
         loadImage();
-    }
-
-    private String getName() {
-        String whatsapp = PrefState.getInstance(getContext()).getWhatsAppState();
-        if (whatsapp.equals(Config.WhatsAppDirectoryPath) || whatsapp.equals(Config.WhatsAppNewDirectoryPath))
-            return "WhatsApp";
-        else if (whatsapp.equals(Config.GBWhatsAppDirectoryPath) || whatsapp.equals(Config.GBWhatsAppNewDirectoryPath))
-            return "GB WhatsApp";
-        else
-            return "WhatsApp Business";
     }
 }

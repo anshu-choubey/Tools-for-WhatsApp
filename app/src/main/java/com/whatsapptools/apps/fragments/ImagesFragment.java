@@ -3,6 +3,7 @@ package com.whatsapptools.apps.fragments;
 
 import android.content.Context;
 import android.content.UriPermission;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.documentfile.provider.DocumentFile;
@@ -11,13 +12,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.whatsapptools.apps.R;
@@ -40,29 +41,23 @@ public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRef
     TextView textView;
     private RecyclerView recyclerView;
     private List<DocumentFile> list;
-     String path, state;
-     File dir;
-     DocumentFile[] files;
+    String path;
+    DocumentFile[] files;
 
-    public ImagesFragment() {
+    public ImagesFragment(String path) {
+        this.path = path;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_images, container, false);
-        state = PrefState.getInstance(getContext()).getWhatsAppState();
-        if (TextUtils.isEmpty(state)) {
-            path = Config.WhatsAppDirectoryPath;
-        } else {
-            path = state;
-        }
         recyclerView = view.findViewById(R.id.fragment_images_recycler_view);
         swipeRefreshLayout = view.findViewById(R.id.fragment_images_swipe_refresh);
         imageView = view.findViewById(R.id.fragment_images_image_view);
         textView = view.findViewById(R.id.fragment_images_text_view);
         layout = view.findViewById(R.id.fragment_images_linear_layout);
-        list = new ArrayList<DocumentFile>();
+        list = new ArrayList<>();
         adapter = new ImageAdapter(getContext(), list);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setHasFixedSize(true);
@@ -80,8 +75,22 @@ public class ImagesFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private void loadImage() {
         list.clear();
         swipeRefreshLayout.setRefreshing(true);
-        List<UriPermission> listn = requireActivity().getContentResolver().getPersistedUriPermissions();
-        DocumentFile dir = DocumentFile.fromTreeUri(requireActivity(), listn.get(0).getUri());
+        DocumentFile dir;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            List<UriPermission> uriList = requireActivity().getContentResolver().getPersistedUriPermissions();
+            if (uriList.size() < 1)
+                return;
+
+            dir = DocumentFile.fromTreeUri(requireActivity(), uriList.get(0).getUri());
+        } else {
+            dir = DocumentFile.fromFile(new File(path));
+        }
+
+        if (dir == null) {
+            Toast.makeText(requireContext(), "Some Error Occurred", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (dir.exists()) {
             layout.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);

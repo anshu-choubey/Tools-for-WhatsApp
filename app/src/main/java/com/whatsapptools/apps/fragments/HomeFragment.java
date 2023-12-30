@@ -19,15 +19,11 @@ import com.whatsapptools.apps.activities.WebWhatsAppActivity;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-
-
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
-    }
     Context context;
-    LinearLayout item0,item1,item2,item3,item4,item5,item6,item7,item8,item9;
+    LinearLayout item0, item1, item2, item3, item4, item5, item6, item7, item8, item9;
     Intent intent;
     String KEY = "Home";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,10 +40,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         item8 = view.findViewById(R.id.item8);
         item9 = view.findViewById(R.id.item9);
 
-
-
-
-
         item0.setOnClickListener(this);
         item1.setOnClickListener(this);
         item2.setOnClickListener(this);
@@ -59,59 +51,60 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         item8.setOnClickListener(this);
         item9.setOnClickListener(this);
 
-
-
-
-
-
-
-
-
-
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        if (v == item1){
+        if (v == item1) {
             intent = new Intent(context, TabActivity.class);
-            intent.putExtra(KEY,1);
-            startActivity(intent);        }
-        if (v == item2){
-            intent = new Intent(context,TabActivity.class);
-            intent.putExtra(KEY,2);
-            startActivity(intent);        }
-        if (v == item3){
+            intent.putExtra(KEY, 1);
+            startActivity(intent);
+        }
+        if (v == item2) {
+            intent = new Intent(context, TabActivity.class);
+            intent.putExtra(KEY, 2);
+            startActivity(intent);
+        }
+        if (v == item3) {
             intent = new Intent(context, ShowActivity.class);
-            intent.putExtra(KEY,3);
-            startActivity(intent);        }
+            intent.putExtra(KEY, 3);
+            startActivity(intent);
+        }
 
-        if (v == item0){
-            intent = new Intent(context,TabActivity.class);
-            intent.putExtra(KEY,0);
-            startActivity(intent);       }
-        if (v == item4){
+        if (v == item0) {
+            intent = new Intent(context, TabActivity.class);
+            intent.putExtra(KEY, 0);
+            startActivity(intent);
+        }
+        if (v == item4) {
             intent = new Intent(context, StylishActivity.class);
-            startActivity(intent);         }
-        if (v == item5){
-            intent = new Intent(context,ShowActivity.class);
-            intent.putExtra(KEY,5);
-            startActivity(intent);       }
-        if (v == item6){
+            startActivity(intent);
+        }
+        if (v == item5) {
+            intent = new Intent(context, ShowActivity.class);
+            intent.putExtra(KEY, 5);
+            startActivity(intent);
+        }
+        if (v == item6) {
             intent = new Intent(context, WebWhatsAppActivity.class);
-            startActivity(intent);         }
-        if (v == item7){
-            intent = new Intent(context,ShowActivity.class);
-            intent.putExtra(KEY,7);
-            startActivity(intent);            }
-        if (v == item8){
-            intent = new Intent(context,ShowActivity.class);
-            intent.putExtra(KEY,8);
-            startActivity(intent);            }
-        if (v == item9){
-            intent = new Intent(context,ShowActivity.class);
-            intent.putExtra(KEY,9);
-            startActivity(intent);            }
+            startActivity(intent);
+        }
+        if (v == item7) {
+            intent = new Intent(context, ShowActivity.class);
+            intent.putExtra(KEY, 7);
+            startActivity(intent);
+        }
+        if (v == item8) {
+            intent = new Intent(context, ShowActivity.class);
+            intent.putExtra(KEY, 8);
+            startActivity(intent);
+        }
+        if (v == item9) {
+            intent = new Intent(context, ShowActivity.class);
+            intent.putExtra(KEY, 9);
+            startActivity(intent);
+        }
     }
 
     @Override

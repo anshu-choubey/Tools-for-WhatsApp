@@ -1,7 +1,12 @@
 package com.whatsapptools.apps.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +27,14 @@ import com.whatsapptools.apps.utils.Config;
 import com.whatsapptools.apps.utils.FileConfig;
 import com.whatsapptools.apps.utils.ShareFile;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
+import java.util.Objects;
 
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.viewHolder> {
@@ -49,13 +59,24 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.viewHolder> 
         holder.setImg(file.getUri().toString());
         holder.btnShare.setOnClickListener(view -> ShareFile.getInstance(context).share("video/*", file.getUri().toString()));
         holder.btnSave.setOnClickListener(view -> {
-            File src = new File(file.getUri().toString());
-            File dst = new File(Config.WhatsAppSaveStatus);
             try {
-                FileConfig.getInstance(context).saveFile(src, dst);
-                Toast.makeText(context, "Video Saved", Toast.LENGTH_SHORT).show();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    ContentValues values = new ContentValues();
+                    values.put(MediaStore.MediaColumns.DISPLAY_NAME, file.getName());
+                    values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS + Config.WhatsAppSaveStatus);
+                    values.put(MediaStore.MediaColumns.MIME_TYPE, "video/*");
+
+                    Uri destinationUri = Objects.requireNonNull(context.getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values));
+                    InputStream inputStream = Objects.requireNonNull(context.getContentResolver().openInputStream(file.getUri()));
+                    OutputStream outputStream = context.getContentResolver().openOutputStream(destinationUri);
+                    IOUtils.copy(inputStream, outputStream);
+                } else {
+                    File src = new File(file.getUri().toString());
+                    File dst = new File(Config.WhatsAppSaveStatus);
+                    FileConfig.getInstance(context).saveFile(src, dst);
+                }
             } catch (IOException e) {
-                e.printStackTrace();
+                Toast.makeText(context, "Exception while Saving", Toast.LENGTH_SHORT).show();
             }
         });
 

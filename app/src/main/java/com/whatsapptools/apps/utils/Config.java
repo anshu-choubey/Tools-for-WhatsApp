@@ -8,5 +8,5 @@ public class Config {
     public static final String GBWhatsAppNewDirectoryPath = "Android/media/com.gbwhatsapp/GBWhatsApp/Media/.Statuses/";
     public static final String WhatsAppBusinessPath = "WhatsApp Business/Media/.Statuses/";
     public static final String WhatsAppBusinessNewPath = "Android/media/com.whatsapp.w4b/WhatsApp Business/Media/.Statuses/";
-    public static final String WhatsAppSaveStatus = "Download/WhatsSave/";
+    public static final String WhatsAppSaveStatus = "/WhatsSave";
 }

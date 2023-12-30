@@ -179,16 +179,12 @@ public class TabActivity extends AppCompatActivity {
         Uri uri = intent.getParcelableExtra("android.provider.extra.INITIAL_URI");
         if (uri != null) {
             String scheme = uri.toString();
-            scheme = scheme.replace("/root/", "/document/");
-            scheme += Uri.encode(":") + Uri.encode(directory);
-
+            scheme += ":" + directory;
             uri = Uri.parse(scheme);
-
             intent.putExtra("android.provider.extra.INITIAL_URI", uri);
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
                     | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
                     | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-
             activityResultLauncher.launch(intent);
         }
     }

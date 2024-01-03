@@ -1,6 +1,9 @@
 package com.whatsapptools.apps.fragments;
 
+import static android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION;
+
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,6 +37,7 @@ public class DirectChatFragment extends Fragment {
     SharedPreferences preference;
     Activity activity;
     RadioGroup radioGroup;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,76 +58,19 @@ public class DirectChatFragment extends Fragment {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (R.id.whatsappRadio == checkedId){
+                if (R.id.whatsappRadio == checkedId) {
                     SendMessage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            String messege = message.getText().toString();
-                            String number1 = number.getText().toString();
-                            String mainNumber = CcP.getSelectedCountryCode() + number1;
-                            if (messege.length() == 0) {
-                                Toast.makeText(getContext(), "Please enter message", Toast.LENGTH_SHORT).show();
-                            } else if (number1.length() == 0) {
-                                Toast.makeText(getContext(), R.string.app_name, Toast.LENGTH_SHORT).show();
-                            } else if (number1.length() < 7) {
-                                Toast.makeText(getContext(), R.string.app_name, Toast.LENGTH_SHORT).show();
-                            } else {
-                                messege.length();
-                                try {
-                                    PackageManager packageManager = getActivity().getPackageManager();
-                                    Intent intent = new Intent("android.intent.action.VIEW");
-                                    try {
-                                        String str3 = "https://api.whatsapp.com/send?phone=" + mainNumber + "&text=" + messege;
-                                        intent.setPackage("com.whatsapp");
-                                        intent.setData(Uri.parse(str3));
-                                        if (intent.resolveActivity(packageManager) != null) {
-                                            startActivity(intent);
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                } catch (Exception e2) {
-                                    Toast.makeText(getContext(), "Error/n" + e2.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-
+                            sendMessage("WhatsApp", "com.whatsapp");
                         }
                     });
                 }
-                if (R.id.bwhatsappRadio ==  checkedId){
-
+                if (R.id.bwhatsappRadio == checkedId) {
                     SendMessage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            String messege = message.getText().toString();
-                            String number1 = number.getText().toString();
-                            String mainNumber = CcP.getSelectedCountryCode() + number1;
-                            if (messege.length() == 0) {
-                                Toast.makeText(getContext(), "Please enter message", Toast.LENGTH_SHORT).show();
-                            } else if (number1.length() == 0) {
-                                Toast.makeText(getContext(), R.string.app_name, Toast.LENGTH_SHORT).show();
-                            } else if (number1.length() < 7) {
-                                Toast.makeText(getContext(), R.string.app_name, Toast.LENGTH_SHORT).show();
-                            } else {
-                                messege.length();
-                                try {
-                                    PackageManager packageManager = getActivity().getPackageManager();
-                                    Intent intent = new Intent("android.intent.action.VIEW");
-                                    try {
-                                        String str3 = "https://api.whatsapp.com/send?phone=" + mainNumber + "&text=" + messege;
-                                        intent.setPackage("com.whatsapp.w4b");
-                                        intent.setData(Uri.parse(str3));
-                                        if (intent.resolveActivity(packageManager) != null) {
-                                            startActivity(intent);
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                } catch (Exception e2) {
-                                    Toast.makeText(getContext(), "Error/n" + e2.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-
+                            sendMessage("WhatsApp Business","com.whatsapp.w4b");
                         }
                     });
                 }
@@ -131,6 +78,31 @@ public class DirectChatFragment extends Fragment {
         });
         return view;
     }
+
+    private void sendMessage(String whatsAppName, String whatsAppPackage) {
+        String messege = message.getText().toString();
+        String number1 = number.getText().toString();
+        String mainNumber = CcP.getSelectedCountryCode() + number1;
+        if (messege.length() == 0) {
+            Toast.makeText(getContext(), "Please enter message", Toast.LENGTH_SHORT).show();
+        } else if (number1.length() == 0) {
+            Toast.makeText(getContext(), R.string.app_name, Toast.LENGTH_SHORT).show();
+        } else if (number1.length() < 7) {
+            Toast.makeText(getContext(), R.string.app_name, Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                String str3 = "https://api.whatsapp.com/send?phone=" + mainNumber + "&text=" + messege;
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(str3));
+                intent.setPackage(whatsAppPackage);
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(getContext(), whatsAppName + " Not Installed", Toast.LENGTH_SHORT).show();
+            } catch (Exception e){
+                Toast.makeText(getContext(), "Error Occurred", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     //Send Message without saving number method
     private class btnSendMessageListner implements View.OnClickListener {
         public void onClick(View v) {
@@ -153,7 +125,7 @@ public class DirectChatFragment extends Fragment {
                         intent.setPackage("com.whatsapp");
                         intent.setData(Uri.parse(str3));
                         if (intent.resolveActivity(packageManager) != null) {
-                           startActivity(intent);
+                            startActivity(intent);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -202,7 +174,7 @@ public class DirectChatFragment extends Fragment {
     private class btnCcpListner implements CountryCodePicker.OnCountryChangeListener {
         public void onCountrySelected() {
             CcP.setCountryPreference(CcP.getSelectedCountryNameCode());
-            preference.edit().putString("last_locale",CcP.getSelectedCountryCode()).apply();
+            preference.edit().putString("last_locale", CcP.getSelectedCountryCode()).apply();
         }
     }
 }

@@ -2,15 +2,18 @@ package com.whatsapptools.apps.fragments;
 
 
 import android.content.Context;
+import android.content.UriPermission;
+import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.documentfile.provider.DocumentFile;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,43 +22,34 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bumptech.glide.Glide;
 import com.whatsapptools.apps.R;
 import com.whatsapptools.apps.adapter.VideoAdapter;
-import com.whatsapptools.apps.utils.Config;
-import com.whatsapptools.apps.utils.PrefState;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-
+import java.util.Objects;
 
 
 public class VideosFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    String path, state;
+    String path, name;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private List<File> list;
+    private List<DocumentFile> list;
     private VideoAdapter adapter;
-    File dir;
-    File[] files;
+    DocumentFile[] files;
     private ImageView imageView;
     private TextView textView;
     private LinearLayout layout;
 
-    public VideosFragment() {
-
+    public VideosFragment(String name, String path) {
+        this.name = name;
+        this.path = path;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_videos, container, false);
-        state = PrefState.getInstance(getContext()).getWhatsAppState();
-        if (TextUtils.isEmpty(state)) {
-            path = Config.WhatsAppDirectoryPath;
-        } else {
-            path = state;
-        }
         recyclerView = view.findViewById(R.id.fragment_videos_recycler_view);
         swipeRefreshLayout = view.findViewById(R.id.fragment_videos_swipe_refresh);
         layout = view.findViewById(R.id.fragment_videos_linear_layout);
@@ -79,31 +73,44 @@ public class VideosFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private void loadVideos() {
         list.clear();
         swipeRefreshLayout.setRefreshing(true);
-        dir = new File(path);
+
+        DocumentFile dir;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            List<UriPermission> uriList = requireActivity().getContentResolver().getPersistedUriPermissions();
+            if (uriList.size() < 1)
+                return;
+
+            dir = DocumentFile.fromTreeUri(requireActivity(), uriList.get(0).getUri());
+        } else {
+            dir = DocumentFile.fromFile(new File(path));
+        }
+
+        if (dir == null) {
+            Toast.makeText(requireContext(), "Some Error Occurred", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (dir.exists()) {
             layout.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
             files = dir.listFiles();
             if (files.length != 0) {
-                for (File file : files) {
-                    if (!file.getName().endsWith(".jpg") && !file.getName().endsWith(".png") && !file.getName().endsWith(".gif") && !file.getName().endsWith(".jpeg"))
+                for (DocumentFile file : files) {
+                    if (Objects.requireNonNull(file.getName()).endsWith(".mp4") || file.getName().endsWith(".wbem"))
                         list.add(file);
                 }
                 adapter.notifyDataSetChanged();
                 swipeRefreshLayout.setRefreshing(false);
             } else {
-                // Toast.makeText(getContext(), "No files found", Toast.LENGTH_SHORT).show();
                 layout.setVisibility(View.VISIBLE);
                 recyclerView.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
-                displayError(getContext(), R.drawable.new_404, "OOPS!\nNo videos available, check some status on " + getName() + " and come back.");
+                displayError(getContext(), R.drawable.new_404, "OOPS!\nNo videos available, check some status on " + name + " and come back.");
             }
         } else {
             layout.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
             swipeRefreshLayout.setRefreshing(false);
-            displayError(getContext(), R.drawable.new_404_2, "OOPS!\n" + getName() + " Not Installed.");
-            // Toast.makeText(getContext(), "Install WhatsApp", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -115,15 +122,6 @@ public class VideosFragment extends Fragment implements SwipeRefreshLayout.OnRef
     @Override
     public void onRefresh() {
         loadVideos();
-    }
-
-    private String getName() {
-        if (PrefState.getInstance(getContext()).getWhatsAppState().equals(Config.WhatsAppDirectoryPath))
-            return "WhatsApp";
-        else if (PrefState.getInstance(getContext()).getWhatsAppState().equals(Config.GBWhatsAppDirectoryPath))
-            return "GB WhatsApp";
-        else
-            return "WhatsApp Business";
     }
 
 }

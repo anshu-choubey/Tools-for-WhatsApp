@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryHolder> {
 
     List<File> list;
@@ -55,70 +54,58 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryH
         else
             holder.showImgBtn(View.VISIBLE);
 
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (holder.isImage(file)) {
-                    ArrayList<String> files = new ArrayList<>();
-                    int a = 0, b = 0;
-                    for (int i = 0; i < list.size(); i++) {
-                        if (holder.isImage(list.get(i))) {
-                            files.add(list.get(i).getAbsolutePath());
-                            if (file == list.get(i))
-                                b = a;
-                            a++;
-                        }
+        holder.layout.setOnClickListener(view -> {
+            if (holder.isImage(file)) {
+                ArrayList<String> files = new ArrayList<>();
+                int a = 0, b = 0;
+                for (int i = 0; i < list.size(); i++) {
+                    if (holder.isImage(list.get(i))) {
+                        files.add(list.get(i).getAbsolutePath());
+                        if (file == list.get(i))
+                            b = a;
+                        a++;
                     }
-                    Intent intent = new Intent(context, ImageViewer.class);
-                    intent.putStringArrayListExtra("files", files);
-                    intent.putExtra("position", b);
-                    intent.putExtra("args", "gallery");
-                    context.startActivity(intent);
-                } else {
-                    Intent intent = new Intent(context, VideoViewer.class);
-                    intent.putExtra("video", file.getAbsolutePath());
-                    intent.putExtra("args", "gallery");
-                    context.startActivity(intent);
                 }
+                Intent intent = new Intent(context, ImageViewer.class);
+                intent.putStringArrayListExtra("files", files);
+                intent.putExtra("position", b);
+                intent.putExtra("args", "gallery");
+                context.startActivity(intent);
+            } else {
+                Intent intent = new Intent(context, VideoViewer.class);
+                intent.putExtra("video", file.getAbsolutePath());
+                intent.putExtra("args", "gallery");
+                context.startActivity(intent);
             }
         });
 
-        holder.imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    Intent intent = new Intent(context, VideoViewer.class);
-                    intent.putExtra("video", file.getAbsolutePath());
-                    intent.putExtra("args", "gallery");
-                    context.startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+        holder.imageButton.setOnClickListener(view -> {
+            try {
+                Intent intent = new Intent(context, VideoViewer.class);
+                intent.putExtra("video", file.getAbsolutePath());
+                intent.putExtra("args", "gallery");
+                context.startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        holder.fbShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (holder.isImage(file))
-                    ShareFile.getInstance(context).share("image/*", file.getAbsolutePath());
-                else
-                    ShareFile.getInstance(context).share("video/*", file.getAbsolutePath());
-            }
+        holder.fbShare.setOnClickListener(view -> {
+            if (holder.isImage(file))
+                ShareFile.getInstance(context).share("image/*", file.getAbsolutePath());
+            else
+                ShareFile.getInstance(context).share("video/*", file.getAbsolutePath());
         });
 
-        holder.fbDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    FileConfig.getInstance(context).deleteFile(file);
-                    list.remove(position);
-                    notifyItemRemoved(position);
-                    notifyItemRangeChanged(position, list.size());
-                    Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        holder.fbDelete.setOnClickListener(view -> {
+            try {
+                FileConfig.getInstance(context).deleteFile(file);
+                list.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, list.size());
+                Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }

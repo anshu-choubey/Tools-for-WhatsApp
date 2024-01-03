@@ -2,6 +2,7 @@ package com.whatsapptools.apps.fragments;
 
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class GalleryFragment extends Fragment implements SwipeRefreshLayout.OnRe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
-        path = Config.WhatsAppSaveStatus;
+        path = Config.StorageBasePath + Environment.DIRECTORY_DOWNLOADS + Config.WhatsAppSaveStatus;
         textView = view.findViewById(R.id.fragment_gallery_text_view);
         swipeRefreshLayout = view.findViewById(R.id.fragment_gallery_swipe_refresh);
         recyclerView = view.findViewById(R.id.fragment_gallery_recycler_view);

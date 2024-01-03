@@ -1,5 +1,6 @@
 package com.whatsapptools.apps.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,13 +25,14 @@ import java.util.Objects;
 
 import com.whatsapptools.apps.R;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     TabLayout tabLayout;
     ViewPager viewPager;
     MaterialToolbar materialToolbar;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +71,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-        toggle = new ActionBarDrawerToggle(this, drawerLayout,materialToolbar, R.string.open, R.string.close);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, materialToolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.setDrawerIndicatorEnabled(true);
         navigationView.getMenu().getItem(0).setChecked(true);
@@ -78,16 +80,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.isChecked())
-            item.setChecked(false);
-        else
-            item.setChecked(true);
+        item.setChecked(!item.isChecked());
         drawerLayout.closeDrawers();
 
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
 
             case R.id.nav_home:
                 navigationView.getMenu().getItem(0).setChecked(true);
@@ -101,10 +101,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 navigationView.getMenu().getItem(2).setChecked(true);
                 viewPager.setCurrentItem(2);
                 return true;
-                case R.id.nav_share:
-                    navigationView.getMenu().getItem(4).setChecked(false);
+            case R.id.nav_share:
+                navigationView.getMenu().getItem(4).setChecked(false);
 
-                    share();
+                share();
                 return true;
             case R.id.nav_send:
                 navigationView.getMenu().getItem(5).setChecked(false);
@@ -123,21 +123,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         return true;
     }
+
     private void share() {
         try {
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("text/plain");
-            i.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.app_name));
+            i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
             String sAux = "\n" + getResources().getString(R.string.review) + "\n\n";
             sAux = sAux + "https://play.google.com/store/apps/details?id=" + getApplication().getPackageName();
             i.putExtra(Intent.EXTRA_TEXT, sAux);

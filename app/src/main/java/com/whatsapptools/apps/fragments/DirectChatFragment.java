@@ -61,10 +61,8 @@ public class DirectChatFragment extends Fragment {
         String numberWithCountryCode = CcP.getSelectedCountryCode() + number;
         if (message.length() == 0) {
             Toast.makeText(getContext(), "Please enter message", Toast.LENGTH_SHORT).show();
-        } else if (number.length() == 0) {
-            Toast.makeText(getContext(), R.string.app_name, Toast.LENGTH_SHORT).show();
         } else if (number.length() < 7) {
-            Toast.makeText(getContext(), R.string.app_name, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Enter correct phone number", Toast.LENGTH_SHORT).show();
         } else {
             try {
                 String str3 = "https://api.whatsapp.com/send?phone=" + numberWithCountryCode + "&text=" + message;
@@ -72,9 +70,9 @@ public class DirectChatFragment extends Fragment {
                 intent.setPackage(whatsAppPackage);
                 startActivity(intent);
             } catch (ActivityNotFoundException e) {
-                Toast.makeText(getContext(), whatsAppName + " Not Installed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), whatsAppName + " not installed", Toast.LENGTH_SHORT).show();
             } catch (Exception e){
-                Toast.makeText(getContext(), "Error Occurred", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error occurred", Toast.LENGTH_SHORT).show();
             }
         }
     }

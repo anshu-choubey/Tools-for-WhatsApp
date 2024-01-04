@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/igg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name="com.whatsapptools.apps.activities.ShowActivity"
             android:parentActivityName="com.whatsapptools.apps.activities.HomeActivity">
         </activity>
@@ -25,7 +26,9 @@
 
         <activity android:name="com.whatsapptools.apps.activities.HomeActivity">
         </activity>
+
         <activity android:name="com.whatsapptools.apps.activities.VideoViewer" />
+
         <activity android:name="com.whatsapptools.apps.activities.StylishActivity"
             android:parentActivityName="com.whatsapptools.apps.activities.HomeActivity">
 
@@ -35,15 +38,18 @@
         <activity android:name="com.whatsapptools.apps.activities.TabActivity"
             android:parentActivityName="com.whatsapptools.apps.activities.HomeActivity">
         </activity>
+
         <activity android:name="com.whatsapptools.apps.activities.MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.whatsapptools.apps.activities.ImageActivity"
             android:parentActivityName="com.whatsapptools.apps.activities.MainActivity" />
+
         <activity
             android:name="com.whatsapptools.apps.activities.VideoActivity"
             android:parentActivityName="com.whatsapptools.apps.activities.MainActivity" />

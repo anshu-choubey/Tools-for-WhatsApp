@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backupfile.iml" filepath="$PROJECT_DIR$/.idea/modules/backupfile.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/backupfile.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/backupfile.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/backupfile.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/backupfile.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/backupfile.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/backupfile.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/backupfile.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/backupfile.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tools-for-WhatsApp.iml" filepath="$PROJECT_DIR$/.idea/modules/Tools-for-WhatsApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Tools-for-WhatsApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Tools-for-WhatsApp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Tools-for-WhatsApp.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Tools-for-WhatsApp.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Tools-for-WhatsApp.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Tools-for-WhatsApp.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Tools-for-WhatsApp.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Tools-for-WhatsApp.app.unitTest.iml" />
     </modules>
   </component>
 </project>

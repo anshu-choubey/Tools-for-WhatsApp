@@ -87,7 +87,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     }
 
     private void showAboutDialog() {
-        final Dialog dialog = new Dialog(context, R.style.DialogCustomTheme);
+        final Dialog dialog = new Dialog(context, R.style.MyThemeOverlay_Toolbar);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         dialog.setContentView(R.layout.dialog_about);

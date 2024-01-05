@@ -80,8 +80,9 @@ public class TextDecoratorFragment extends Fragment {
         this.rvDecorText.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
         this.rvDecorText.setAdapter(new DecoratorAdapter(getContext(),decorList, new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
-                new CustomBottomSheet(((Font) decorList.get(i)).fontText).show(Objects.requireNonNull(getActivity()).getSupportFragmentManager(), "customBottomSheetDialog");
+                new CustomBottomSheet(((Font) decorList.get(i)).fontText).show(requireActivity().getSupportFragmentManager(), "customBottomSheetDialog");
             }
         }));
     }
 }
+

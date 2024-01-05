@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,6 +20,8 @@ import com.whatsapptools.apps.fragments.HomeFragment;
 import com.whatsapptools.apps.adapter.ViewPagerAdapter;
 import com.whatsapptools.apps.fragments.GalleryFragment;
 import com.whatsapptools.apps.fragments.SettingFragment;
+import android.net.Uri;
+
 
 import java.util.Objects;
 
@@ -107,14 +110,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     share();
                 return true;
             case R.id.nav_send:
-                navigationView.getMenu().getItem(5).setChecked(false);
+                navigationView.getMenu().getItem(4).setChecked(false);
 
-                ShareCompat.IntentBuilder.from(this)
-                        .setType("message/rfc822")
-                        .addEmailTo(getString(R.string.email))
-                        .setSubject("Any Queries")
-                        .setText("Type Here")
-                        .startChooser();
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:" + getString(R.string.email)));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Any Queries");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Type Here");
+
+                if (emailIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(Intent.createChooser(emailIntent, "Send Email"));
+                } else {
+                    Toast.makeText(this, "No email app installed", Toast.LENGTH_SHORT).show();
+                }
                 return true;
 
             default:

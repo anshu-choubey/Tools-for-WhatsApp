@@ -23,6 +23,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     namespace 'com.whatsapptools.apps'
+
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -48,4 +52,5 @@ dependencies {
     implementation 'com.github.fenjuly:ArrowDownloadButton:9e15b85e8a'
     implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
     implementation 'com.karumi:dexter:6.2.3'
+
 }

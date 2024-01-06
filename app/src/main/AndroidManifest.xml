@@ -24,8 +24,20 @@
         <activity android:name="com.whatsapptools.apps.activities.WebWhatsAppActivity"/>
 
 
+
+        <activity android:name="com.whatsapptools.apps.activities.HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.SENDTO" />
+                <data android:scheme="mailto" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         <activity android:name="com.whatsapptools.apps.activities.HomeActivity">
-        </activity>
+
 
         <activity android:name="com.whatsapptools.apps.activities.VideoViewer" />
 

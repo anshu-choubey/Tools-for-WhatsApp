@@ -1,4 +1,4 @@
-<div align="center"><img src="igg-web.png"/></div>
+<div align="center"><img src="https://github.com/Sneha123-zudo/Tools-for-WhatsApp/assets/145490348/fecad6b0-435b-4980-b77a-ba9d287d7ed9" height="100"/></div>
 
 # <div align="center">Tools For WhatsApp</div>
 
